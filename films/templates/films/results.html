@@ -1,0 +1,9 @@
+<h1>{{ film.title }}</h1>
+
+<ul>
+{% for cschedue in film.cschedue_set.all %}
+    <li>{{ cschedue }}, reserved:  {{ cschedue.reserved_places }},  total places: {{ cschedue.places }}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'films:index' %}">Chose again</a>

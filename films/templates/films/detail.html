@@ -1,0 +1,11 @@
+<h1>{{ film.title }}</h1>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'films:reservation' film.id %}" method="post">
+{% csrf_token %}
+{% for cschedue in film.cschedue_set.all %}
+    <input type="radio" name="cschedue" id="cschedue{{ forloop.counter }}" value="{{ cschedue.id }}" />
+    <label for="cschedue{{ forloop.counter }}">{{ cschedue }}</label><br />
+{% endfor %}
+<input type="submit" value="Reservation" />
+</form>
